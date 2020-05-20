@@ -19,8 +19,6 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    val TAG = "OTA"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,7 +38,23 @@ class MainActivity : AppCompatActivity() {
         }
         btnStatus.setOnClickListener {
             val status = isMyServiceRunning(MyService::class.java)
-            Log.d(TAG, status.toString())
+            Log.d(Const.TAG, status.toString())
+        }
+
+        // (1.5) service
+
+        val btnStart2 = findViewById<Button>(R.id.btn_start2)
+        val btnStop2 = findViewById<Button>(R.id.btn_stop2)
+        val btnStatus2 = findViewById<Button>(R.id.btn_status2)
+
+        btnStart2.setOnClickListener {
+            Intent(this, MyService2::class.java).also { startService(it) }
+        }
+        btnStop2.setOnClickListener {
+            Intent(this, MyService2::class.java).also { stopService(it) }
+        }
+        btnStatus2.setOnClickListener {
+            // TODO
         }
 
         // (2) intent service
@@ -58,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         }
         btnIsStatus.setOnClickListener {
             val status = isMyServiceRunning(MyIntentService::class.java)
-            Log.d(TAG, status.toString())
+            Log.d(Const.TAG, status.toString())
         }
 
         // (3) bound service
@@ -127,7 +141,7 @@ class MainActivity : AppCompatActivity() {
         }
         btnBStatus.setOnClickListener {
             val status = isMyServiceRunning(MessengerService::class.java)
-            Log.d(TAG, status.toString())
+            Log.d(Const.TAG, status.toString())
         }
 
     }

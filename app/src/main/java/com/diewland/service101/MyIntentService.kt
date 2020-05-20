@@ -14,8 +14,6 @@ import android.util.Log
  */
 class MyIntentService : IntentService("MyIntentService") {
 
-    val TAG = "OTA"
-
     /**
      * The IntentService calls this method from the default worker thread with
      * the intent that started the service. When this method returns, IntentService
@@ -26,9 +24,9 @@ class MyIntentService : IntentService("MyIntentService") {
         // For our sample, we just sleep for 5 seconds.
         try {
 
-            Log.d(TAG, "do 3 seconds process..")
+            Log.d(Const.TAG, "do 3 seconds process..")
             Thread.sleep(3000)
-            Log.d(TAG, "process done")
+            Log.d(Const.TAG, "process done")
 
         } catch (e: InterruptedException) {
             // Restore interrupt status.

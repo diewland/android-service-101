@@ -14,8 +14,6 @@ import android.util.Log
 //  * https://android.googlesource.com/platform/development/+/master/samples/ApiDemos/src/com/example/android/apis/app/MessengerService.java
 //  * https://android.googlesource.com/platform/development/+/master/samples/ApiDemos/src/com/example/android/apis/app/MessengerServiceActivities.java
 
-val TAG = "OTA"
-
 /** Command to the service to display a message  */
 private const val MSG_SAY_HELLO = 1
 
@@ -36,7 +34,7 @@ class MessengerService : Service() {
         override fun handleMessage(msg: Message) {
             when (msg.what) {
                 MSG_SAY_HELLO ->
-                    Log.d(TAG, "Hello from MessengerServer")
+                    Log.d(Const.TAG, "Hello from MessengerServer")
                 else -> super.handleMessage(msg)
             }
         }
@@ -47,7 +45,7 @@ class MessengerService : Service() {
      * for sending messages to the service.
      */
     override fun onBind(intent: Intent): IBinder? {
-        Log.d(TAG, "binding from MessengerServer")
+        Log.d(Const.TAG, "binding from MessengerServer")
         mMessenger = Messenger(IncomingHandler(this))
         return mMessenger.binder
     }

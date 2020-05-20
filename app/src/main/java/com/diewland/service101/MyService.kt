@@ -12,8 +12,6 @@ import android.util.Log
 
 class MyService : Service() {
 
-    val TAG = "OTA"
-
     var num = 0
     lateinit var handler: Handler
 
@@ -25,7 +23,7 @@ class MyService : Service() {
         to stop the service when its work is complete by calling stopSelf() or stopService().
         If you only want to provide binding, you don't need to implement this method.
         */
-        Log.d(TAG, "[$startId] start service")
+        Log.d(Const.TAG, "[$startId] start service")
 
         handler = Handler()
         count(startId)
@@ -41,7 +39,7 @@ class MyService : Service() {
         */
         super.onCreate()
 
-        Log.d(TAG, "create service")
+        Log.d(Const.TAG, "create service")
     }
 
     override fun onDestroy() {
@@ -55,7 +53,7 @@ class MyService : Service() {
         num = 0
         handler.removeCallbacksAndMessages(null)
 
-        Log.d(TAG, "stop service")
+        Log.d(Const.TAG, "stop service")
     }
 
     override fun onBind(p0: Intent?): IBinder? {
@@ -73,9 +71,9 @@ class MyService : Service() {
     private fun count (id: Int) {
         handler.postDelayed({
             num += 1
-            Log.d(TAG, "[$id] count $num")
+            Log.d(Const.TAG, "[$id] count $num")
             if (num >= 10) {
-                Log.d(TAG, "[$id] reached 10, stop itself")
+                Log.d(Const.TAG, "[$id] reached 10, stop itself")
                 stopSelf(id)
             }
             else {

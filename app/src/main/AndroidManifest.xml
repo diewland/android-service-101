@@ -19,6 +19,7 @@
 
         <!-- TODO exported = true, try to call from other app -->
         <service android:name=".MyService" android:exported="true" />
+        <service android:name=".MyService2" android:exported="true" />
         <service android:name=".MyIntentService" android:exported="true" />
         <service android:name=".MessengerService" android:exported="true" />
 
